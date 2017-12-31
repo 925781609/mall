@@ -2,8 +2,12 @@ package com.liuil.web.domain;
 
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
+@Configuration
 @ConfigurationProperties(prefix = "com.liuil.web")
+@PropertySource("classpath:helloworld.properties")
 public class ConfigBean{
   private String greeting;
   private String content;
