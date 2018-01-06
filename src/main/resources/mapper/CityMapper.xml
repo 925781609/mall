@@ -8,8 +8,6 @@
     <result column="description" property="description" />
   </resultMap>
 
-  <parameterMap id="City" type="com.liuil.web.domain.City" />
-
   <sql id="Base_Column_List">
     id, province_id, city_name, description
   </sql>
