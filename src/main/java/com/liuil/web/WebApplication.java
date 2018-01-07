@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 // mapper 接口类扫描包配置
 @SpringBootApplication
-@MapperScan("com.liuil.web.dao")
+@MapperScan("com.liuil.web.mapper")
 public class WebApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WebApplication.class, args);
