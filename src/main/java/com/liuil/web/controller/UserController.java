@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
   public static Logger logger = Logger.getLogger(UserController.class);
   // 定义一些模板常量

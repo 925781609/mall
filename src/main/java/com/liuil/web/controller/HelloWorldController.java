@@ -25,12 +25,12 @@ public class HelloWorldController {
     }
   }
 
-  @RequestMapping("/hello")
+  @RequestMapping("/")
   public String welcome(Map<String, Object> model){
       String message = configBean.getGreeting() + ", " + configBean.getContent();
       // model.put("message", message); # 上面的可以实现相同的功能
       // return 的是template的名字
-      return "welcome1";
+      return "index";
   }
 
 }
