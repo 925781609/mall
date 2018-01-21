@@ -23,12 +23,12 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-  @RequestMapping(value = "login", method = RequestMethod.PUT)
+  @RequestMapping(value = "login", method = RequestMethod.POST)
   public String login(@RequestParam ("username") String username,
-                       @RequestParam("pasword") String password,
+                       @RequestParam("password") String password,
                        HttpSession session){
     logger.warn("in login put method");
-    logger.warn("username:" + username + "  " + "password" + password);
+    logger.warn("username:" + username + "  " + "password:" + password);
     try{
       if(userService.login(username, password)){
         System.out.println(username+ " " + password);
