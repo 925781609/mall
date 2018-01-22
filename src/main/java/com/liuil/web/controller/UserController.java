@@ -23,7 +23,19 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-  @RequestMapping(value = "login", method = RequestMethod.POST)
+
+  // 登录
+  @GetMapping(value="login")
+  public String loginPage(HttpSession session){
+    logger.info("info");
+    logger.warn("warning");
+    if(session.getAttribute(UserContext.USER_NAME) != null){
+      return "redirect:/" ;
+    }
+    return "login";
+  }
+
+  @PostMapping(value = "login")
   public String login(@RequestParam ("username") String username,
                        @RequestParam("password") String password,
                        HttpSession session){
@@ -42,16 +54,14 @@ public class UserController {
       return LOGIN;
     }
   }
-  // 显示登入用的表单
-  @RequestMapping(value="login", method=RequestMethod.GET)
-  public String loginPage(HttpSession session){
-    logger.info("info");
-    logger.warn("warning");
+
+  @PostMapping("logout")
+  public String logout(){
     if(session.getAttribute(UserContext.USER_NAME) != null){
       return "redirect:/" ;
     }
-    return "login";
   }
+
 
 
 }
