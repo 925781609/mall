@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping(value="user")
 public class UserController {
   public static Logger logger = Logger.getLogger(UserController.class);
   // 定义一些模板常量
-  public final static String LOGIN = "welcome1";
+  public final static String LOGIN = "index";
 
   @Autowired
   private UserService userService;
@@ -26,13 +27,13 @@ public class UserController {
   public String login(@RequestParam ("username") String username,
                        @RequestParam("password") String password,
                        HttpSession session){
-    logger.warn("in login put method");
-    logger.warn("username:" + username + "  " + "password:" + password);
     try{
       if(userService.login(username, password)){
+        logger.warn("in login put method");
+        logger.warn("username:" + username + "  " + "password:" + password);
         System.out.println(username+ " " + password);
         session.setAttribute(UserContext.USER_NAME, username);
-        return "redirect:userInfo/showInfo";
+        return "redirect:index";
       }
       else{
         return LOGIN;
