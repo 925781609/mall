@@ -1,4 +1,16 @@
 # 说明
-这是一个基于Spring Boot的Java Web程序，从无到有，一步一步搭建
+基于Spring Boot的电商项目
+
+# 进展
+基于spring security和MySQL实现注册功能
+
 
 # 目录结构说明
+
+# 相关技术
+Spring Boot
+MyBatis
+MySQL
+Thymeleaf
+
+
