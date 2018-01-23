@@ -3,15 +3,19 @@ package com.liuil.web.controller;
 import com.liuil.web.service.UserService;
 import com.liuil.web.util.UserContext;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.liuil.web.util.UserContext;
+import com.liuil.web.domain.RegisterForm;
 
 @Controller
 @RequestMapping(value="user")
@@ -56,16 +60,19 @@ public class UserController {
   }
 
   @PostMapping("logout")
-  public String logout(){
+  public String logout(HttpSession session){
     if(session.getAttribute(UserContext.USER_NAME) != null){
-      session.removeAttribute(Const.USER_NAME);
+      session.removeAttribute(UserContext.USER_NAME);
       return "redirect:/" ;
+    }
+    else{
+      return "login";
     }
   }
 
 
   @GetMapping("register")
-  public String registerForm(){
+  public String registerForm(Model model){
     //instantiate an RegisterForm object
       RegisterForm registerForm = new RegisterForm();
 
@@ -79,7 +86,7 @@ public class UserController {
   @PostMapping("register")
   public String registerUserAccount(@ModelAttribute("registerForm") @Valid RegisterForm registerForm,
                                                 BindingResult result){
-      userService.register(registerForm, result)
+      userService.register(registerForm, result);
 
       if (result.hasErrors()){
         return "registration";
@@ -88,5 +95,4 @@ public class UserController {
       userService.save(registerForm);
       return "redirect:/registration?success";
   }
-
 }

@@ -1,9 +1,14 @@
 package com.liuil.web.service.impl;
 
 import com.liuil.web.controller.UserController;
+import com.liuil.web.domain.RegisterForm;
+import com.liuil.web.domain.User;
+import com.liuil.web.mapper.UserDao;
 import com.liuil.web.service.UserService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,8 +29,9 @@ public class UserServiceImpl implements UserService {
     }
   }
   public void register(RegisterForm registerForm, BindingResult result){
-    logger.debug("In register ")
-    User existing = userService.findByEmail(registerForm.getEmail());
+    logger.debug("In register ");
+    //User existing = userService.findByEmail(registerForm.getEmail());
+    String existing = "test";
     if (existing != null){
             result.rejectValue("email", null, "There is already an account registered with that email");
     }
@@ -35,5 +41,5 @@ public class UserServiceImpl implements UserService {
     return userDao.findByEmail(email);
   }
 
-  public boolean void save(RegisterForm registerForm);
+  public void save(RegisterForm registerForm) {};
 }

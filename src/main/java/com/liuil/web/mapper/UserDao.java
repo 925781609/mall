@@ -1,6 +1,6 @@
 package com.liuil.web.mapper;
 
-import com.liuil.web.domain.City;
+import com.liuil.web.domain.User;
 import org.apache.ibatis.annotations.Param;
 
 

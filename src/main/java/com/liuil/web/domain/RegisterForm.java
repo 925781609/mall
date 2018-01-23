@@ -1,4 +1,10 @@
-class RegisterForm{
+package com.liuil.web.domain;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+public class RegisterForm{
 
     @NotNull(message="请输入用户名")
     @Size(min=5, max=30, message="最少5位，最大不能超过30位")

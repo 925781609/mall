@@ -22,12 +22,12 @@ public class User {
     this.id = id;
   }
 
-  public String getUserName() {
-    return userName;
+  public String getUsername() {
+    return username;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   public String getPassword() {
@@ -70,6 +70,14 @@ public class User {
     this.confirmed = confirmed;
   }
 
+  public boolean isActivate() {
+    return activate;
+  }
+
+  public void setActivate(boolean activate) {
+    this.activate = activate;
+  }
+
   public Date getCreateTime() {
     return createTime;
   }
@@ -78,13 +86,11 @@ public class User {
     this.createTime = createTime;
   }
 
-  public Date getUpdateTime() {
-    return updateTime;
+  public Date getModifiedTime() {
+    return modifiedTime;
   }
 
-  public void setUpdateTime(Date updateTime) {
-    this.updateTime = updateTime;
+  public void setModifiedTime(Date modifiedTime) {
+    this.modifiedTime = modifiedTime;
   }
-
-
 }
