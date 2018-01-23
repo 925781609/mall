@@ -3,9 +3,9 @@
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `user` (
   `id` unsigned int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
-  `username` varchar(50) NOT NULL COMMENT '用户名',
+  `username` varchar(30) NOT NULL COMMENT '用户名',
   `password` varchar(50) NOT NULL COMMENT '用户密码，MD5加密',
-  `email` varchar(50) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `role` unsigned int(4) NOT NULL COMMENT '角色0-管理员,1-普通用户',
   `is_confirmed` unsigned tinyint DEFAULT 0 COMMENT '邮箱验证',
