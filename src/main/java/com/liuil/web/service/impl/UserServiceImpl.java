@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
   public static Logger logger = Logger.getLogger(UserController.class);
+
+  @Autowired
+  private UserDao userDao;
+
   // 暂时login使用最简单的方式实现
   public boolean login(String username, String password){
     if("username".equals(username) && "password".equals(password)){
@@ -19,4 +23,17 @@ public class UserServiceImpl implements UserService {
       return false;
     }
   }
+  public void register(RegisterForm registerForm, BindingResult result){
+    logger.debug("In register ")
+    User existing = userService.findByEmail(registerForm.getEmail());
+    if (existing != null){
+            result.rejectValue("email", null, "There is already an account registered with that email");
+    }
+  }
+
+  public User findByEmail(String email){
+    return userDao.findByEmail(email);
+  }
+
+  public boolean void save(RegisterForm registerForm);
 }

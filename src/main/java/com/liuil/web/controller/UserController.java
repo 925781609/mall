@@ -79,15 +79,14 @@ public class UserController {
   @PostMapping("register")
   public String registerUserAccount(@ModelAttribute("registerForm") @Valid RegisterForm registerForm,
                                                 BindingResult result){
-      userService.register(registerForm)
+      userService.register(registerForm, result)
 
       if (result.hasErrors()){
         return "registration";
       }
 
-      userService.save(userDto);
+      userService.save(registerForm);
       return "redirect:/registration?success";
   }
-
 
 }
