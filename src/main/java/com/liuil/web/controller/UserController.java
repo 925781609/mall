@@ -45,7 +45,7 @@ public class UserController {
         logger.warn("username:" + username + "  " + "password:" + password);
         System.out.println(username+ " " + password);
         session.setAttribute(UserContext.USER_NAME, username);
-        return "redirect:index";
+        return "redirect:/";
       }
       else{
         return LOGIN;
@@ -58,10 +58,36 @@ public class UserController {
   @PostMapping("logout")
   public String logout(){
     if(session.getAttribute(UserContext.USER_NAME) != null){
+      session.removeAttribute(Const.USER_NAME);
       return "redirect:/" ;
     }
   }
 
+
+  @GetMapping("register")
+  public String registerForm(){
+    //instantiate an RegisterForm object
+      RegisterForm registerForm = new RegisterForm();
+
+    //add it to the model
+    model.addAttribute("registerForm", registerForm);
+
+    //get out
+    return "register";
+  }
+
+  @PostMapping("register")
+  public String registerUserAccount(@ModelAttribute("registerForm") @Valid RegisterForm registerForm,
+                                                BindingResult result){
+      userService.register(registerForm)
+
+      if (result.hasErrors()){
+        return "registration";
+      }
+
+      userService.save(userDto);
+      return "redirect:/registration?success";
+  }
 
 
 }
