@@ -4,14 +4,15 @@ import java.util.Date;
 
 public class User {
   private int id;  // 自增ID
-  private String userName; // 用户名
+  private String username; // 用户名
   private String password; // 用户密码(MD5加密)
   private String email; // 邮箱(唯一)
   private String phone; // 手机号(唯一)
   private int   role; // 角色 0-管理员， 1-普通用户
   private boolean confirmed; // 是否通过邮箱验证
+  private boolean activate; // 用户是否有效
   private Date createTime; // 创建时间
-  private Date updateTime; // 更新时间
+  private Date modifiedTime; // 更新时间
 
   public int getId() {
     return id;
@@ -21,12 +22,12 @@ public class User {
     this.id = id;
   }
 
-  public String getUserName() {
-    return userName;
+  public String getUsername() {
+    return username;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   public String getPassword() {
@@ -69,6 +70,14 @@ public class User {
     this.confirmed = confirmed;
   }
 
+  public boolean isActivate() {
+    return activate;
+  }
+
+  public void setActivate(boolean activate) {
+    this.activate = activate;
+  }
+
   public Date getCreateTime() {
     return createTime;
   }
@@ -77,13 +86,11 @@ public class User {
     this.createTime = createTime;
   }
 
-  public Date getUpdateTime() {
-    return updateTime;
+  public Date getModifiedTime() {
+    return modifiedTime;
   }
 
-  public void setUpdateTime(Date updateTime) {
-    this.updateTime = updateTime;
+  public void setModifiedTime(Date modifiedTime) {
+    this.modifiedTime = modifiedTime;
   }
-
-
 }

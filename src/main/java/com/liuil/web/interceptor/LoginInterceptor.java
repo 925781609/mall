@@ -3,14 +3,17 @@ package com.liuil.web.interceptor;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class LoginInterceptor implements HandlerInterceptor{
-  public static Logger logger = Logger.getLogger(LoginInterceptor.class);
+@Component
+public class LoginInterceptor extends HandlerInterceptorAdapter {
+  //public static Logger logger = Logger.getLogger(LoginInterceptor.getClass());
 
   @Override
   public  boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws  Exception{
-    logger.info("preHandler is called");
+    //logger.info("preHandler is called");
+    return true;
   }
 
 }
