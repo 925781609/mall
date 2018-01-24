@@ -16,7 +16,7 @@
           You've successfully registered to our awesome app!
         </div>
       </div>
-      <form id="registerForm" th:action="@{/user/register}" th:object="${registerForm}" method="POST">                                                            
+      <form id="registerForm" th:action="@{/user/register}" th:object="${registerForm}" method="POST">
           <div class="form-body">
               <div class="form-group" th:classappend="${#fields.hasErrors('username')} ? has-error : ''">
                   <label>UserName</label>                                                                
@@ -37,8 +37,8 @@
               <div class="form-group" th:classappend="${#fields.hasErrors('phone')} ? has-error : ''">
                   <label>Phone</label>                                                                
                   <div th:classappend="${#fields.hasErrors('phone')} ? 'input-icon right' : ''">
-                      <i th:if="${#fields.hasErrors('phone')}" class="fa fa-exclamation tooltips" data-original-title="请输入有效的邮箱" data-container="body"></i>
-                      <input type="text" class="form-control" maxlength="64" th:field="*{phone}" placeholder="For example: joe@xyz.com"/>
+                      <i th:if="${#fields.hasErrors('phone')}" class="fa fa-exclamation tooltips" data-original-title="请输入有效的手机号" data-container="body"></i>
+                      <input type="text" class="form-control" maxlength="64" th:field="*{phone}" placeholder="For example: 1**********"/>
                       <span th:if="${#fields.hasErrors('phone')}" class="help-block" th:errors="*{phone}"></span>
                   </div>
               </div>

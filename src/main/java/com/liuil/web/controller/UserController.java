@@ -72,24 +72,23 @@ public class UserController {
 
 
   @GetMapping("register")
-  public String registerForm(Model model){
+  public String registerForm(RegisterForm registerForm){
     //instantiate an RegisterForm object
-      RegisterForm registerForm = new RegisterForm();
 
     //add it to the model
-    model.addAttribute("registerForm", registerForm);
+    //model.addAttribute("registerForm", registerForm);
 
     //get out
     return "register";
   }
 
   @PostMapping("register")
-  public String registerUserAccount(@ModelAttribute("registerForm") @Valid RegisterForm registerForm,
+  public String registerUserAccount(@Valid RegisterForm registerForm,
                                                 BindingResult result){
       userService.register(registerForm, result);
 
       if (result.hasErrors()){
-        return "registration";
+        return "register";
       }
 
       userService.save(registerForm);
