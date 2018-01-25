@@ -9,7 +9,7 @@ public interface UserService {
 
   public void register(RegisterForm registerForm, BindingResult result);
 
-  public void save(RegisterForm registerForm);
-
   public User findByEmail(String email);
+
+  public int save(RegisterForm registerForm);
 }

@@ -17,10 +17,33 @@
   <sql id="Base_Column_List">
     id, username, password, email, phone, role, is_confirmed, is_activate
   </sql>
+
+  <select id="selectPasswordByUsername"  parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    password
+    FROM user
+    WHERE username = #{username}
+  </select>
+
   <select id="findByName"  parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM user
+    WHERE username = #{username}
+  </select>
+
+  <select id="findByEmail"  parameterType="java.lang.String" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
     FROM user
     WHERE email = #{email}
   </select>
+
+  <insert id="save" parameterType="com.liuil.web.domain.User" >
+    INSERT INTO
+    user
+    (username, password, email, phone, gmt_create, gmt_modified)
+    VALUES
+    (#{username}, #{password}, #{email}, #{phone}, now(), now())
+  </insert>
 </mapper>

@@ -46,8 +46,6 @@ public class UserController {
     try{
       if(userService.login(username, password)){
         logger.warn("in login put method");
-        logger.warn("username:" + username + "  " + "password:" + password);
-        System.out.println(username+ " " + password);
         session.setAttribute(UserContext.USER_NAME, username);
         return "redirect:/";
       }
@@ -91,7 +89,6 @@ public class UserController {
         return "register";
       }
 
-      userService.save(registerForm);
       return "redirect:/registration?success";
   }
 }
