@@ -91,4 +91,21 @@ public class UserController {
 
       return "redirect:/registration?success";
   }
+
+  // Mail 暂时放在这
+  @GetMapping("mail")
+  public String sendSimpleMail(){
+    @Autowired
+    Email email;
+    email.setFrom("925781609@qq.com");
+    email.setTo("925781609@qq.com");
+    email.setSubject("subject");
+    email.setContent("content");
+
+    @Autowired
+    EmailService emailService;
+
+    emailService.sendSimpleMessage(email);
+
+  }
 }
