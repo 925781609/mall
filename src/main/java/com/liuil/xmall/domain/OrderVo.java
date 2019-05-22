@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OrderVo {
-    private Order order;
-    private List<OrderItem> orderItems;
+
+  private Order order;
+  private List<OrderItem> orderItems;
 }

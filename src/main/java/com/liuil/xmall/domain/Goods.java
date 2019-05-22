@@ -6,7 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Goods {
-    private Integer goodsId;
-    private String name;
-    private Integer type;
+
+  private Integer goodsId;
+  private String name;
+  private Integer type;
 }

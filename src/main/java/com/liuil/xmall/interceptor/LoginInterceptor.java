@@ -10,7 +10,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
   //public static Logger logger = Logger.getLogger(LoginInterceptor.getClass());
 
   @Override
-  public  boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws  Exception{
+  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+      throws Exception {
     //logger.info("preHandler is called");
     return true;
   }

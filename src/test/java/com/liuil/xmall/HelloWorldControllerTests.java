@@ -9,19 +9,21 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
 // 不太确定以下两个注解的作用，没有这两个注解， 测试也能正常进行
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
 public class HelloWorldControllerTests {
+
   private MockMvc mvc;
 
   @Before
-  public void setUp() throws Exception{
+  public void setUp() throws Exception {
     mvc = MockMvcBuilders.standaloneSetup(new HelloWorldController()).build();
   }
 
   @Test
-  public void getHello() throws Exception{
+  public void getHello() throws Exception {
     mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andDo(MockMvcResultHandlers.print())

@@ -2,7 +2,6 @@ package com.liuil.xmall.mapper;
 
 import com.liuil.xmall.domain.OrderItem;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
 @Mapper
 public interface OrderItemDao extends BaseDao<OrderItem> {

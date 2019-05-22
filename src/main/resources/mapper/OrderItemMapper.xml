@@ -11,7 +11,7 @@
   <insert id="batchSave" parameterType="java.util.List">
     INSERT INTO order_item(order_id,order_item_id, user_id, description)
     VALUES
-    <foreach collection="l" item="e" index="index" separator=",">
+    <foreach collection="l" index="index" item="e" separator=",">
       (#{e.orderId}, #{e.orderItemId}, #{e.userId}, #{e.description})
     </foreach>
   </insert>

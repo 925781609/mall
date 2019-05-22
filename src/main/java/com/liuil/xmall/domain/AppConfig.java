@@ -3,8 +3,8 @@ package com.liuil.xmall.domain;
 import com.liuil.xmall.interceptor.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 
 @Configuration
@@ -18,7 +18,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
   // excludePathPatterns 用户排除拦截
   // registry.addInterceptor(new MyInterceptor1()).addPathPatterns("/**");
   @Override
-  public void addInterceptors(InterceptorRegistry registry){
+  public void addInterceptors(InterceptorRegistry registry) {
     registry.addInterceptor(loginInterceptor);
   }
 }

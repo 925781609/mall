@@ -7,8 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Order {
-    private Long orderId;
-    private Integer userId;
-    private String description;
-    private Date createTime;
+
+  private Long orderId;
+  private Integer userId;
+  private String description;
+  private Date createTime;
 }

@@ -16,50 +16,68 @@
           You've successfully registered to our awesome app!
         </div>
       </div>
-      <form id="registerForm" th:action="@{/user/register}" th:object="${registerForm}" method="POST">
-          <div class="form-body">
-              <div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error : ''">
-                  <label>UserName</label>                                                                
-                  <div th:classappend="${#fields.hasErrors('name')} ? 'input-icon right' : ''">
-                      <i th:if="${#fields.hasErrors('name')}" class="fa fa-exclamation tooltips" data-original-title="请输入有效的用户名" data-container="body"></i>
-                      <input type="text" class="form-control" maxlength="30" th:field="*{name}" placeholder="5-30个字符"/>
-                      <span th:if="${#fields.hasErrors('name')}" class="help-block" th:errors="*{name}"></span>
-                  </div>
-              </div>                                                                                               
-              <div class="form-group" th:classappend="${#fields.hasErrors('email')} ? has-error : ''">
-                  <label>Email</label>                                                                
-                  <div th:classappend="${#fields.hasErrors('email')} ? 'input-icon right' : ''">
-                      <i th:if="${#fields.hasErrors('email')}" class="fa fa-exclamation tooltips" data-original-title="请输入有效的邮箱" data-container="body"></i>
-                      <input type="text" class="form-control" maxlength="64" th:field="*{email}" placeholder="For example: joe@xyz.com"/>
-                      <span th:if="${#fields.hasErrors('email')}" class="help-block" th:errors="*{email}"></span>
-                  </div>
-              </div>
-              <div class="form-group" th:classappend="${#fields.hasErrors('phone')} ? has-error : ''">
-                  <label>Phone</label>                                                                
-                  <div th:classappend="${#fields.hasErrors('phone')} ? 'input-icon right' : ''">
-                      <i th:if="${#fields.hasErrors('phone')}" class="fa fa-exclamation tooltips" data-original-title="请输入有效的手机号" data-container="body"></i>
-                      <input type="text" class="form-control" maxlength="64" th:field="*{phone}" placeholder="For example: 1**********"/>
-                      <span th:if="${#fields.hasErrors('phone')}" class="help-block" th:errors="*{phone}"></span>
-                  </div>
-              </div>
-              <div class="form-group" th:classappend="${#fields.hasErrors('password')} ? has-error : ''">
-                  <label>Password</label>                                                                
-                  <div th:classappend="${#fields.hasErrors('password')} ? 'input-icon right' : ''">
-                      <i th:if="${#fields.hasErrors('password')}" class="fa fa-exclamation tooltips" data-original-title="请输入密码" data-container="body"></i>
-                      <input type="password" class="form-control" maxlength="50" th:field="*{password}" placeholder="5-50位字符，可以是数字、字母或者a-zA-z!@#$%^&*"/>
-                      <span th:if="${#fields.hasErrors('password')}" class="help-block" th:errors="*{password}"></span>
-                  </div>
-              </div>
-              <div class="form-group" th:classappend="${#fields.hasErrors('confirmPassword')} ? has-error : ''">
-                  <label>Confirm Password</label>                                                                
-                  <div th:classappend="${#fields.hasErrors('confirmPassword')} ? 'input-icon right' : ''">
-                      <i th:if="${#fields.hasErrors('confirmPassword')}" class="fa fa-exclamation tooltips" data-original-title="请输入密码" data-container="body"></i>
-                      <input type="confirmPassword" class="form-control" maxlength="50" th:field="*{confirmPassword}" placeholder="5-50位字符，可以是数字、字母或者a-zA-z!@#$%^&*"/>
-                      <span th:if="${#fields.hasErrors('confirmPassword')}" class="help-block" th:errors="*{confirmPassword}"></span>
-                  </div>
-              </div>
+      <form id="registerForm" th:action="@{/user/register}" th:object="${registerForm}"
+            method="POST">
+        <div class="form-body">
+          <div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error : ''">
+            <label>UserName</label>
+            <div th:classappend="${#fields.hasErrors('name')} ? 'input-icon right' : ''">
+              <i th:if="${#fields.hasErrors('name')}" class="fa fa-exclamation tooltips"
+                 data-original-title="请输入有效的用户名" data-container="body"></i>
+              <input type="text" class="form-control" maxlength="30" th:field="*{name}"
+                     placeholder="5-30个字符"/>
+              <span th:if="${#fields.hasErrors('name')}" class="help-block"
+                    th:errors="*{name}"></span>
+            </div>
+          </div>
+          <div class="form-group" th:classappend="${#fields.hasErrors('email')} ? has-error : ''">
+            <label>Email</label>
+            <div th:classappend="${#fields.hasErrors('email')} ? 'input-icon right' : ''">
+              <i th:if="${#fields.hasErrors('email')}" class="fa fa-exclamation tooltips"
+                 data-original-title="请输入有效的邮箱" data-container="body"></i>
+              <input type="text" class="form-control" maxlength="64" th:field="*{email}"
+                     placeholder="For example: joe@xyz.com"/>
+              <span th:if="${#fields.hasErrors('email')}" class="help-block"
+                    th:errors="*{email}"></span>
+            </div>
+          </div>
+          <div class="form-group" th:classappend="${#fields.hasErrors('phone')} ? has-error : ''">
+            <label>Phone</label>
+            <div th:classappend="${#fields.hasErrors('phone')} ? 'input-icon right' : ''">
+              <i th:if="${#fields.hasErrors('phone')}" class="fa fa-exclamation tooltips"
+                 data-original-title="请输入有效的手机号" data-container="body"></i>
+              <input type="text" class="form-control" maxlength="64" th:field="*{phone}"
+                     placeholder="For example: 1**********"/>
+              <span th:if="${#fields.hasErrors('phone')}" class="help-block"
+                    th:errors="*{phone}"></span>
+            </div>
+          </div>
+          <div class="form-group"
+               th:classappend="${#fields.hasErrors('password')} ? has-error : ''">
+            <label>Password</label>
+            <div th:classappend="${#fields.hasErrors('password')} ? 'input-icon right' : ''">
+              <i th:if="${#fields.hasErrors('password')}" class="fa fa-exclamation tooltips"
+                 data-original-title="请输入密码" data-container="body"></i>
+              <input type="password" class="form-control" maxlength="50" th:field="*{password}"
+                     placeholder="5-50位字符，可以是数字、字母或者a-zA-z!@#$%^&*"/>
+              <span th:if="${#fields.hasErrors('password')}" class="help-block"
+                    th:errors="*{password}"></span>
+            </div>
+          </div>
+          <div class="form-group"
+               th:classappend="${#fields.hasErrors('confirmPassword')} ? has-error : ''">
+            <label>Confirm Password</label>
+            <div th:classappend="${#fields.hasErrors('confirmPassword')} ? 'input-icon right' : ''">
+              <i th:if="${#fields.hasErrors('confirmPassword')}" class="fa fa-exclamation tooltips"
+                 data-original-title="请输入密码" data-container="body"></i>
+              <input type="confirmPassword" class="form-control" maxlength="50"
+                     th:field="*{confirmPassword}" placeholder="5-50位字符，可以是数字、字母或者a-zA-z!@#$%^&*"/>
+              <span th:if="${#fields.hasErrors('confirmPassword')}" class="help-block"
+                    th:errors="*{confirmPassword}"></span>
+            </div>
+          </div>
           <div class="form-actions">
-              <button type="submit" class="btn blue">Submit</button>
+            <button type="submit" class="btn blue">Submit</button>
           </div>
       </form>
     </div>

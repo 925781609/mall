@@ -15,22 +15,22 @@ public class HelloWorldController {
 
   @Autowired
   ConfigBean configBean;
+
   @ModelAttribute(value = "message")
-  public String addMessage(@RequestParam(required = false) String abc){
-    if(abc == null){
+  public String addMessage(@RequestParam(required = false) String abc) {
+    if (abc == null) {
       return "default";
-    }
-    else{
+    } else {
       return abc;
     }
   }
 
   @RequestMapping("/")
-  public String welcome(Map<String, Object> model){
-      String message = configBean.getGreeting() + ", " + configBean.getContent();
-      // model.put("message", message); # 上面的可以实现相同的功能
-      // return 的是template的名字
-      return "index";
+  public String welcome(Map<String, Object> model) {
+    String message = configBean.getGreeting() + ", " + configBean.getContent();
+    // model.put("message", message); # 上面的可以实现相同的功能
+    // return 的是template的名字
+    return "index";
   }
 
 }
