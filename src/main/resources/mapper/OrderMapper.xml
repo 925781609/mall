@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuil.xmall.mapper.OrderDao">
+
+  <resultMap id="order" type="com.liuil.xmall.domain.Order">
+    <result column="order_id" property="orderId"/>
+    <result column="user_id" property="userId"/>
+    <result column="description" property="description"/>
+    <result column="create_time" property="createTime"/>
+  </resultMap>
+
+  <resultMap id="orderDetails" type="com.liuil.xmall.domain.OrderDetails">
+    <result property="orderId" column="order_id"/>
+    <result property="userId" column="user_id"/>
+    <result property="orderItemId" column="order_item_id"/>
+    <result property="orderDescription" column="order_description"/>
+    <result property="orderItemDescription" column="order_item_description"/>
+    <result property="createTime" column="create_time"/>
+  </resultMap>
+
+  <insert id="save">
+      INSERT INTO `order`(order_id, user_id, description)
+      VALUES (#{e.orderId}, #{e.userId}, #{e.description})
+  </insert>
+  <select id="getOrders" resultMap="order" parameterType="com.liuil.xmall.domain.OrderRequest">
+    SELECT order_id, user_id, description, create_time
+    FROM `order`
+    <where>
+      <if test="e.userId !=null">
+        user_id = #{e.userId}
+      </if>
+      <if test="e.start != null and e.end != null">
+        AND order_id BETWEEN #{e.start} AND #{e.end}
+      </if>
+    </where>
+  </select>
+
+  <select id="getOrderDetails" resultMap="orderDetails">
+    SELECT o.order_id, o.user_id, o.description as order_description, o.create_time,
+    oi.order_item_id, oi.description as order_item_description
+    FROM `order` o
+    INNER JOIN `order_item` oi
+    ON o.order_id = oi.order_id
+    <where>
+      <if test="e.userId !=null">
+        o.user_id = #{e.userId}
+      </if>
+      <if test="e.startTime!=null and e.endTime!=null">
+        AND o.order_id BETWEEN
+        ${@com.liuil.xmall.common.util.DateUtils@stringDateToShardingKey(e.startTime, @com.liuil.xmall.common.Constants@DATE_FORMAT_YEAR_MONTH_DAT)}
+        AND
+        ${@com.liuil.xmall.common.util.DateUtils@stringDateToShardingKey(e.endTime, @com.liuil.xmall.common.Constants@DATE_FORMAT_YEAR_MONTH_DAT)}
+      </if>
+      <if test="e.start!=null and e.end!=null">
+        AND o.order_id BETWEEN #{start} AND #{end}
+      </if>
+
+    </where>
+  </select>
+
+
+</mapper>

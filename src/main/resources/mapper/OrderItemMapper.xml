@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liuil.xmall.mapper.OrderItemDao">
+
+
+  <insert id="save">
+    INSERT INTO order_item(order_id,order_item_id, user_id, description)
+    VALUES (#{e.orderId}, #{e.orderItemId}, #{e.userId}, #{e.description})
+  </insert>
+  <insert id="batchSave" parameterType="java.util.List">
+    INSERT INTO order_item(order_id,order_item_id, user_id, description)
+    VALUES
+    <foreach collection="l" item="e" index="index" separator=",">
+      (#{e.orderId}, #{e.orderItemId}, #{e.userId}, #{e.description})
+    </foreach>
+  </insert>
+</mapper>
